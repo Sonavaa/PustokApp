@@ -1,6 +1,6 @@
 ﻿namespace PustokApp.Models
 {
-	public class ProductImage:Base
+	public class ProductImage:AuditTable
 	{
         public string Url { get; set; } = null!;
 		public bool IsMain { get; set; }
