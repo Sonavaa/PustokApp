@@ -329,8 +329,36 @@
       "PackagePath": "staticwebassets\\assets\\image\\products\\cart-product-1.jpg"
     },
     {
-      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\product-1.jpg",
-      "PackagePath": "staticwebassets\\assets\\image\\products\\product-1.jpg"
+      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\image-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\image\\products\\image-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\image-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\image\\products\\image-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\image-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\image\\products\\image-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\image-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\image\\products\\image-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\image-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\image\\products\\image-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\image-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\image\\products\\image-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\image-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\image\\products\\image-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\image-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\image\\products\\image-8.jpg"
     },
     {
       "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\product-10.jpg",
@@ -347,34 +375,6 @@
     {
       "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\product-13.jpg",
       "PackagePath": "staticwebassets\\assets\\image\\products\\product-13.jpg"
-    },
-    {
-      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\product-2.jpg",
-      "PackagePath": "staticwebassets\\assets\\image\\products\\product-2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\product-3.jpg",
-      "PackagePath": "staticwebassets\\assets\\image\\products\\product-3.jpg"
-    },
-    {
-      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\product-4.jpg",
-      "PackagePath": "staticwebassets\\assets\\image\\products\\product-4.jpg"
-    },
-    {
-      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\product-5.jpg",
-      "PackagePath": "staticwebassets\\assets\\image\\products\\product-5.jpg"
-    },
-    {
-      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\product-6.jpg",
-      "PackagePath": "staticwebassets\\assets\\image\\products\\product-6.jpg"
-    },
-    {
-      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\product-7.jpg",
-      "PackagePath": "staticwebassets\\assets\\image\\products\\product-7.jpg"
-    },
-    {
-      "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\product-8.jpg",
-      "PackagePath": "staticwebassets\\assets\\image\\products\\product-8.jpg"
     },
     {
       "Id": "C:\\Users\\HP\\Desktop\\PustokApp\\PustokApp\\wwwroot\\assets\\image\\products\\product-9.jpg",
