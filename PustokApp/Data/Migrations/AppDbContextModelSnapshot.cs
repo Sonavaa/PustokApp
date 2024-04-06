@@ -61,6 +61,9 @@ namespace PustokApp.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsIdentity")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -78,7 +81,7 @@ namespace PustokApp.Data.Migrations
 
                     b.HasIndex("ParentIdId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("PustokApp.Models.Product", b =>
@@ -120,6 +123,9 @@ namespace PustokApp.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsIdentity")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -150,7 +156,7 @@ namespace PustokApp.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("PustokApp.Models.ProductImage", b =>
@@ -177,6 +183,9 @@ namespace PustokApp.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsIdentity")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsMain")
                         .HasColumnType("bit");
 
@@ -197,7 +206,7 @@ namespace PustokApp.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductImages");
+                    b.ToTable("ProductImages", (string)null);
                 });
 
             modelBuilder.Entity("PustokApp.Models.Tag", b =>
@@ -224,6 +233,9 @@ namespace PustokApp.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsIdentity")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -236,7 +248,7 @@ namespace PustokApp.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags");
+                    b.ToTable("Tags", (string)null);
                 });
 
             modelBuilder.Entity("ProductTag", b =>

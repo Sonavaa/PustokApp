@@ -4,7 +4,8 @@ namespace PustokApp.Areas.Admin.Controllers
 {
 	public class DashboardController : Controller
 	{
-		public IActionResult Index()
+        [Area("Admin")]
+        public IActionResult Index()
 		{
 			return View();
 		}

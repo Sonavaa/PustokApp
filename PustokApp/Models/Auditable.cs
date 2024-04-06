@@ -8,5 +8,6 @@
         public DateTime? UpdatedAt { get; set; }
         public string? DeletedBy { get; set; }
         public DateTime? DeletedAt { get; set; } 
+        public bool IsIdentity { get; set; }
     }
 }

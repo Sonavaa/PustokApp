@@ -1,0 +1,9 @@
+﻿@model Category
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="exampleInputEmail1">New Name</label>
+        <input type="input" asp-for="Name" class="form-control" id="exampleNewName" aria-describedby="emailHelp" placeholder="Enter New Category Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary d-block">Create</button>
+</form>

@@ -2,9 +2,12 @@ using Microsoft.EntityFrameworkCore;
 using PustokApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<AppDbContext>(x =>
-		   x.UseSqlServer(builder.Configuration.GetConnectionString("cString")));
+
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<AppDbContext>(x =>
+           x.UseSqlServer(builder.Configuration.GetConnectionString("cString")));
+
 var app = builder.Build();
 
 
