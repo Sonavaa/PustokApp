@@ -1,0 +1,65 @@
+﻿@model Product
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Name">Name</label>
+        <input class="form-control" asp-for="Name" placeholder="Enter name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Author">Author</label>
+        <input class="form-control" asp-for="Author" placeholder="Enter author name">
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Price</label>
+        <input type="number" class="form-control" asp-for="Price" placeholder="Enter price">
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Discounted Price</label>
+        <input type="number" class="form-control" placeholder="Enter discounted price">
+        <span class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ExTax">Extax</label>
+        <input type="number" class="form-control" asp-for="ExTax" placeholder="Enter book's extax'">
+        <span asp-validation-for="ExTax" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RewardPoint">Reward Point</label>
+        <input type="number" class="form-control" asp-for="RewardPoint" placeholder="Enter reward point">
+        <span asp-validation-for="RewardPoint" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Review">Rewiew</label>
+        <input class="form-control" asp-for="Review" placeholder="Enter book rewiew">
+        <span asp-validation-for="Review" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <input class="form-control" asp-for="Description" placeholder="Enter description">
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="StockCount">Stock Count</label>
+        <input type="number" class="form-control" asp-for="StockCount" placeholder="Enter book rewiew">
+        <span asp-validation-for="StockCount" class="text-danger"></span>
+    </div>
+
+@*     <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Categories(Genres)</label>
+        <select asp-for="Category" asp-items="@(new SelectList(ViewBag.Product,nameof(Product.Id),nameof(Product.Name)))" class="form-control">
+            <option value="@null" selected>Select Book Category</option>
+        </select>
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Tags</label>
+        <select asp-for="Tags" asp-items="@(new SelectList(ViewBag.Product,nameof(Product.Id),nameof(Product.Name)))" class="form-control">
+            <option value="@null" selected>Select Book Tags</option>
+        </select>
+        <span asp-validation-for="Tags" class="text-danger"></span>
+    </div> *@
+    <div asp-validation-summary="ModelOnly" class="text-danger">  </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
