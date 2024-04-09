@@ -18,5 +18,7 @@
 		public Category? Category { get; set; }
 		public List<ProductImage>? ProductImages { get; set; }
         public List<Tag>? Tags { get; set; }
+        public int AuthorId { get; set; }
+		public Author Author { get; set; } = null!;
     }
 }

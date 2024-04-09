@@ -1,14 +1,17 @@
 ﻿@model Category
-<form asp-action="Create" method="post" enctype="multipart/form-data">
+<form method="post">
     <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
-        <input type="input" asp-for="Name" class="form-control" id="exampleName" aria-describedby="emailHelp" placeholder="Enter Category Name">
+        <label asp-for="Name">Name</label>
+        <input class="form-control" asp-for="Name" placeholder="Enter name">
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
-   @*  <div class="form-group">
-        <label for="exampleInputEmail1">Subcategory Name</label>
-        <input type="input" asp-for="Name" class="form-control" id="exampleSubName" aria-describedby="emailHelp" placeholder="Enter Subcategory Name">
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div> *@
-    <button type="submit" class="btn btn-primary d-block">Create</button>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Name</label>
+        <select asp-for="ParentId" asp-items="@(new SelectList(ViewBag.Categories,nameof(Category.Id),nameof(Category.Name)))" class="form-control">
+            <option value="@null" selected>Select Parent Category</option>
+        </select>
+        <span asp-validation-for="ParentId" class="text-danger"></span>
+    </div>
+    <div asp-validation-summary="ModelOnly" class="text-danger">  </div>
+    <button type="submit" class="btn btn-primary">Save</button>
 </form>

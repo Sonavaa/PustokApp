@@ -10,6 +10,7 @@ namespace PustokApp.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Author> Authors { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>()
@@ -19,27 +20,27 @@ namespace PustokApp.Data
         }
 
 
-        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
-        {
+        //public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken))
+        //{
 
-            var entries = ChangeTracker.Entries().Where(E => E.State == EntityState.Added || E.State == EntityState.Modified).ToList();
+        //    var entries = ChangeTracker.Entries().Where(E => E.State == EntityState.Added || E.State == EntityState.Modified).ToList();
 
-            foreach (var entityEntry in entries)
-            {
-                if (entityEntry.State == EntityState.Modified)
-                {
-                    entityEntry.Property("UpdatedDate").CurrentValue = DateTime.Now;
-                }
-                else if (entityEntry.State == EntityState.Added)
-                {
-                    entityEntry.Property("CreatedAt").CurrentValue = DateTime.Now.AddHours(4);
-                    entityEntry.Property("CreatedBy").CurrentValue = "Admin";
-                }
+        //    foreach (var entityEntry in entries)
+        //    {
+        //        if (entityEntry.State == EntityState.Modified)
+        //        {
+        //            entityEntry.Property("UpdatedDate").CurrentValue = DateTime.Now;
+        //        }
+        //        else if (entityEntry.State == EntityState.Added)
+        //        {
+        //            entityEntry.Property("CreatedAt").CurrentValue = DateTime.Now.AddHours(4);
+        //            entityEntry.Property("CreatedBy").CurrentValue = "Admin";
+        //        }
 
-            }
+        //    }
 
-            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
-        }
+        //    return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        //}
 
 
 

@@ -5,10 +5,12 @@ namespace PustokApp.Models
 	public class Category:AuditTable
 	{
         public string Name { get; set; } = null!;
-        public Category? ParentId { get; set; }
-        public List<Category>? ChildCategories { get; set; }
+        public int? ParentId { get; set; }
+        public Category? Parent { get; set; }
+        public List<Category> ChildCategories { get; set; }=new List<Category>();
         [NotMapped]
         public IFormFile File { get; set; } 
-        public List<Product>? Products { get; set; }
+        public List<Product> Products { get; set; }=new List<Product>();
+     
     }
 }

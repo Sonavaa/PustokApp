@@ -18,6 +18,7 @@ namespace PustokApp.Controllers
             var products= _context.Products
                 .Include(p => p.ProductImages)
                 .Include(p => p.Category)
+                .Include(p => p.Author)
                 .ToList();
             return View(products);
         }
