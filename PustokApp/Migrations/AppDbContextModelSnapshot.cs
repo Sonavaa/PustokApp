@@ -230,6 +230,9 @@ namespace PustokApp.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsHover")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsIdentity")
                         .HasColumnType("bit");
 

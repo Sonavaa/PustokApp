@@ -20,10 +20,10 @@
             return false;
         }
 
-        public static async Task<string> SaveFileAsync(this IFormFile file, string root, string client, string folderName)
+        public static async Task<string> SaveFileAsync(this IFormFile file, string root, string client, string folderName, string imageFolder, string productFolder)
         {
             string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            string path = Path.Combine(root,folderName,client, uniqueFileName);
+            string path = Path.Combine(root, client, folderName, imageFolder, productFolder, uniqueFileName);
 
             using FileStream fs = new FileStream(path, FileMode.OpenOrCreate);
             await file.CopyToAsync(fs);

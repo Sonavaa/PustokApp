@@ -1,4 +1,6 @@
-﻿namespace PustokApp.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PustokApp.Models
 {
 	public class Product:AuditTable
 	{
@@ -20,5 +22,12 @@
         public List<Tag>? Tags { get; set; }
         public int AuthorId { get; set; }
 		public Author Author { get; set; } = null!;
+
+        [NotMapped]
+        public List<IFormFile>? File { get; set; }
+        [NotMapped]
+        public IFormFile MainFile { get; set; }
+        [NotMapped]
+        public IFormFile HoverFile { get; set; }
     }
 }

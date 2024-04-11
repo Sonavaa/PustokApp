@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PustokApp.Data;
+using PustokApp.Extensions;
 using PustokApp.Models;
 
 namespace PustokApp.Areas.Admin.Controllers
@@ -18,7 +19,8 @@ namespace PustokApp.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var products = await _context.Products.Include(x => x.ProductImages)
+            ViewBag.Categories = await _context.Categories.ToListAsync();
+            List<Product> products = await _context.Products.Include(x => x.ProductImages)
                                                   .Include(x => x.Category)
                                                   .Where(x => !x.IsDeleted)
                                                   .OrderByDescending(x => x.Id).ToListAsync();
@@ -28,40 +30,102 @@ namespace PustokApp.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            var products = await _context.Products.Include(x => x.ProductImages)
-                                                 .Include(x => x.Category)
-                                                 .Include(x=>x.Author)
-                                                 .Where(x => !x.IsDeleted).ToListAsync();
-            ViewBag.Products = products;
+            ViewBag.Categories = await _context.Categories.ToListAsync();
+            ViewBag.Tags = await _context.Tags.ToListAsync();
+            ViewBag.Author = await _context.Authors.ToListAsync();
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(Product product)
         {
+            ViewBag.Categories = await _context.Categories.ToListAsync();
+            ViewBag.Author = await _context.Authors.ToListAsync();
 
-            var products = await _context.Products.Where(x=> !x.IsDeleted).ToListAsync();
-            ViewBag.Products = products;
+            if (_context.Products.Any(x => x.Name == product.Name))
+            {
+                ModelState.AddModelError("", "Product already exists");
+                return View(product);
+            }
 
             if (!ModelState.IsValid)
             {
-                return View(products);
+                return View(product);
+            }
+            if (product.File != null)
+            {
+                foreach (var file in product.File)
+                {
+
+                    if (!file.CheckFileType("image"))
+                    {
+                        ModelState.AddModelError("", "File Must Be An Image!");
+                        return View(product);
+                    }
+
+                    if (!file.CheckFileSize(10))
+                    {
+                        ModelState.AddModelError("", "File Must Be Less Than 10MB!");
+                        return View(product);
+                    }
+
+                    string uniqueFileName = await file.SaveFileAsync(_env.WebRootPath, "Client", "assets", "image", "products");
+
+                    var additionalProductImages = CreateProduct(_env.WebRootPath,false,false,product);
+
+                    product.ProductImages.Add(additionalProductImages);
+
+                }
             }
 
 
+            if (!product.MainFile.CheckFileType("image"))
+            {
+                ModelState.AddModelError("MainFile", "File Must Be An Image!");
+                return View(product);
+            }
+
+            if (!product.MainFile.CheckFileSize(10))
+            {
+                ModelState.AddModelError("MainFile", "File Must Be Less Than 10MB!");
+                return View(product);
+            }
+
+            string mainFileName = await product.MainFile.SaveFileAsync(_env.WebRootPath, "Client", "assets", "image", "products");
+
+            var mainProductImageCreate = CreateProduct(mainFileName, false, true, product);
+
+            product.ProductImages.Add(mainProductImageCreate);
 
 
-            // Product Image Create Et Ve Check Et + isHover Column Yarat
-            // Create Viewda Image ucun input yarat
-            //Tagsi checkbox ele
-            //product code avtomatik yarat
+            if (!product.HoverFile.CheckFileType("image"))
+            {
+                ModelState.AddModelError("HoverFile", "File Must Be An Image!");
+                return View(product);
+            }
 
-            // Butun Crudlarda silinen adlari yeniden yaratmaq olmur yeniden yaratmaq ucun isdeleted false sertini ver
-            //nomrelemeni orderbydescending ele
+            if (!product.MainFile.CheckFileSize(10))
+            {
+                ModelState.AddModelError("HoverFile", "File Must Be Less Than 10MB!");
+                return View(product);
+            }
+
+            string hoverFileName = await product.HoverFile.SaveFileAsync(_env.WebRootPath, "Client", "assets", "image", "products");
+
+            var hoverProductImageCreate = CreateProduct(hoverFileName, true, false, product);
+            product.ProductImages.Add(hoverProductImageCreate);
 
 
-
-
+            ProductImage CreateProduct(string url, bool isHover, bool isMain, Product product)
+            {
+                return new ProductImage
+                {
+                    Url = url,
+                    IsMain = isMain,
+                    IsHover = isHover,
+                    Product = product
+                };
+            }
 
             Product newProduct = new Product
             {
@@ -76,7 +140,6 @@ namespace PustokApp.Areas.Admin.Controllers
                 Description = product.Description,
                 StockCount = product.StockCount,
                 Category = product.Category,
-                //ProductImages = product.ProductImages,
                 Tags = product.Tags,
                 CreatedAt = DateTime.UtcNow.AddHours(4),
                 CreatedBy = "Admin"
@@ -118,38 +181,22 @@ namespace PustokApp.Areas.Admin.Controllers
             }
 
 
-
             await _context.Products.AddAsync(newProduct);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
+   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // Butun Crudlarda silinen adlari yeniden yaratmaq olmur yeniden yaratmaq ucun isdeleted false sertini ver
+        //nomrelemeni orderbydescending ele
 
 
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var product = _context.Categories.FirstOrDefault(x => x.Id == id);
+            var product = _context.Products.FirstOrDefault(x => x.Id == id);
             if (product == null)
             {
                 return NotFound();
